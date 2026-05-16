@@ -1,5 +1,5 @@
 import express from 'express';
-import { getFeedPosts, getUserPosts, likePost } from '../controllers/posts.js';
+import { getFeedPosts, getUserPosts, likePost, addComment, deletePost } from '../controllers/posts.js';
 import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -10,9 +10,9 @@ router.get('/:userId/posts', verifyToken, getUserPosts);
 
 // Update
 router.patch('/:id/like', verifyToken, likePost);
-//router.post("/:id/comment", verifyToken, addComment);
+router.post('/:id/comment', verifyToken, addComment);
 
 // Delete
-//router.delete('/:id', verifyToken, deletePost);
+router.delete('/:id', verifyToken, deletePost);
 
 export default router;

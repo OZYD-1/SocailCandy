@@ -59,10 +59,10 @@ const PORT = process.env.PORT || 6001;
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-    app.listen(mongoose.connection.port, () => console.log("Connected to MongoDB"));
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+    console.log("Connected to MongoDB");
     // Add data one time
     // User.insertMany(users);
     // Post.insertMany(posts);
   })
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => console.log(`❌ MongoDB connection error: ${error}`));
