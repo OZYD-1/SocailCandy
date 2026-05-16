@@ -12,6 +12,20 @@ const userSchema = new mongoose.Schema(
         occupation: String,
         viewedProfile: Number,
         impressions: Number,
+        socialLinks: {
+            twitter: { type: String, default: "" },
+            linkedin: { type: String, default: "" },
+            instagram: { type: String, default: "" },
+        },
+        friendRequests: [
+            {
+                fromId: { type: String },
+                fromName: { type: String },
+                fromPicture: { type: String },
+                createdAt: { type: Date, default: Date.now },
+                seen: { type: Boolean, default: false },
+            }
+        ],
     },
     { timestamps: true }
 );
