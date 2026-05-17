@@ -37,7 +37,7 @@ const HomePage = () => {
         {isNonMobileScreens && (
           <Box sx={{ flexBasis: "26%" }}>
             <AdvertWidget />
-            <Box m="2rem 0" />
+            <Box sx={{ m: "2rem 0" }} />
             <FriendListWidget userId={_id} />
           </Box>
         )}

@@ -62,8 +62,7 @@ const Navbar = () => {
   const fullName = `${user.firstName} ${user.lastName}`;
   const unseenCount = notifications.filter((n) => !n.seen).length;
 
-  // ─── Load & persist notifications ───────────────────────────────────────────
-  // On mount: load from localStorage first, then refresh from server
+  //load from localStorage first, then refresh from server
   useEffect(() => {
     if (!user?._id) return;
     const stored = localStorage.getItem(NOTIF_STORAGE_KEY(user._id));
@@ -73,7 +72,7 @@ const Navbar = () => {
       } catch {}
     }
     fetchNotifications();
-  }, [user?._id]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user?._id]);
 
   // Save to localStorage whenever notifications change
   useEffect(() => {
@@ -126,7 +125,7 @@ const Navbar = () => {
     localStorage.setItem(NOTIF_STORAGE_KEY(user._id), JSON.stringify(updated));
   };
 
-  // ─── Search ──────────────────────────────────────────────────────────────────
+  // ------------------------------- Search --------------------------------
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -141,7 +140,7 @@ const Navbar = () => {
     if (!search.trim()) { setResults([]); setShowResults(false); return; }
     const timer = setTimeout(() => handleSearch(search), 350);
     return () => clearTimeout(timer);
-  }, [search]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [search]);
 
   const handleSearch = async (query) => {
     if (!query.trim()) return;
@@ -167,7 +166,7 @@ const Navbar = () => {
     navigate(`/profile/${userId}`);
   };
 
-  // ─── Sub-components ──────────────────────────────────────────────────────────
+  // ------------------------------- Sub-components --------------------------------
   const SearchBox = () => (
     <Box ref={searchRef} sx={{ position: "relative" }}>
       <FlexBetween
@@ -284,16 +283,14 @@ const Navbar = () => {
       </Popover>
     </>
   );
-
-  // ─── Render ──────────────────────────────────────────────────────────────────
+  
   return (
     <FlexBetween sx={{ padding: "1rem 6%", backgroundColor: alt }}>
       <FlexBetween gap="1.75rem">
         <Typography
-          fontWeight="bold"
           color="primary"
           onClick={() => navigate("/home")}
-          sx={{ fontSize: "25px", mr: "1rem", "&:hover": { color: dark, cursor: "pointer" } }}
+          sx={{ fontWeight:"bold",fontSize: "25px", mr: "1rem", "&:hover": { color: dark, cursor: "pointer" } }}
         >
           SocialCandy
         </Typography>
@@ -333,7 +330,7 @@ const Navbar = () => {
       {/* MOBILE NAV */}
       {!isNonMobileScreens && isMobileMenuToggled && (
         <Box sx={{ position: "fixed", right: "0", bottom: "0", height: "100%", zIndex: "10", maxWidth: "500px", minWidth: "300px", backgroundColor: background }}>
-          <Box display="flex" justifyContent="flex-end" p="1rem">
+          <Box sx={{ display: "flex", justifyContent: "flex-end", p: "1rem" }}>
             <IconButton onClick={() => setIsMobileMenuToggled(false)}>
               <Close />
             </IconButton>

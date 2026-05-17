@@ -61,8 +61,8 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
     console.log("Connected to MongoDB");
-    // Add data one time
+    // Add data one time to the database (comming soon)
     // User.insertMany(users);
     // Post.insertMany(posts);
   })
-  .catch((error) => console.log(`❌ MongoDB connection error: ${error}`));
+  .catch((error) => console.log(`MongoDB connection error: ${error}`));

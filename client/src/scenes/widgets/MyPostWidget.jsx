@@ -92,8 +92,7 @@ const MyPostWidget = ({ picturePath }) => {
                 <Box
                   {...getRootProps()}
                   border={`2px dashed ${palette.primary.main}`}
-                  sx={{ p: "1rem", width: "100%" }}
-                  sx={{ "&:hover": { cursor: "pointer" } }}
+                  sx={{ p: "1rem", width: "100%" , "&:hover": { cursor: "pointer" } }}
                 >
                   <input {...getInputProps()} />
                   {!image ? (
@@ -160,8 +159,8 @@ const MyPostWidget = ({ picturePath }) => {
           onClick={handlePost}
           sx={{
             m: "0 0 0 0.7rem",
-            color: palette.background.alt,
-            backgroundColor: palette.primary.main,
+            color: palette.background.main,
+            backgroundColor: palette.primary.light,
             borderRadius: "3rem",
           }}
         >

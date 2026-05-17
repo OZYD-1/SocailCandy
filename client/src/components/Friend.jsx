@@ -27,7 +27,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   const handleAction = async () => {
     if (isFriend) {
-      // Remove friend (keep existing behavior)
+      // Remove friend
       const response = await fetch(`http://localhost:3001/users/${_id}/${friendId}`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     }
   };
 
-  // Don't show button for self
+  // Don't show button request for self
   if (String(_id) === String(friendId)) return (
     <FlexBetween>
       <FlexBetween sx={{ gap: "1rem" }}>

@@ -54,7 +54,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
   useEffect(() => {
     getUser();
-  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [userId]);
 
   const openEdit = () => {
     setForm({

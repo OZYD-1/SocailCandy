@@ -81,18 +81,18 @@ const Form = () => {
     });
     const loggedIn = await loggedInResponse.json();
     if (loggedInResponse.ok) {
-      console.log("تم تسجيل الدخول بنجاح:", loggedIn);
+      console.log("تم تسجيل الدخول بنجاح", loggedIn);
       toast.success("Login successful!");
       onSubmitProps.resetForm();
       dispatch(setLogin({ user: loggedIn.user, token: loggedIn.token }));
       navigate("/home");
     } else {
-      console.error("فشلت العملية، رد السيرفر:", loggedIn);
+      console.error("فشلت العملية", loggedIn);
       toast.error("Login failed, please try again");
     }
 
   } catch (error) {
-    console.error("خطأ في الشبكة أو السيرفر مغلق:", error);
+    console.error("خطأ في الشبكة أو السيرفر مسكر", error);
     toast.error("Network error, please try again later");
   }
 };
